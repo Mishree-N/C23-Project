@@ -40,7 +40,7 @@ function setup() {
 	world = engine.world;
 
 	//create package body
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restituition : 0, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution : 0, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -70,16 +70,14 @@ function draw() {
 	packageSprite.x= packageBody.position.x; 
 	packageSprite.y= packageBody.position.y; 
 
-	//call keypressed function
-	keyPressed();
+	//show sprites
+	drawSprites();
 
 	//show box1, box2 and box3
 	box1.display();
 	box2.display();
 	box3.display();
 
-	//show sprites
-	drawSprites();
 }
 
 
@@ -89,8 +87,8 @@ function keyPressed() {
 	if (keyCode === DOWN_ARROW) {
 		//set packageBody's static to false, giving it gravity
 		Matter.Body.setStatic(packageBody, false);
-		//set packageBody's restitution to 0, to make it bounce accordingly
-		packageBody.restitution=0;
+		//set packageBody's restitution to 0.5, to make it bounce accordingly
+		packageBody.restitution=0.5;
 	}
 }
 
